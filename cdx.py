@@ -25,7 +25,7 @@ except:
 class PathManager(object):
 
     def __init__(self):
-        self.db_name = sys.argv[0].replace('.py', '.sqlite3')
+        self.db_name = os.path.splitext(sys.argv[0])[0] + '.sqlite3'
         self.conn = sqlite3.connect(self.db_name)
         self.conn.execute('CREATE TABLE IF NOT EXISTS paths (path TEXT, count INT, time TEXT)')
         self.conn.commit()
